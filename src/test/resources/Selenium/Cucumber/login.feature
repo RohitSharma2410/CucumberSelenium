@@ -1,4 +1,4 @@
-Feature: An example
+Feature: Login
 
   Scenario Outline: The example
     Given I am on Login page
