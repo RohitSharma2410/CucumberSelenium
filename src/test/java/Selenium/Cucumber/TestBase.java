@@ -24,6 +24,7 @@ import io.cucumber.java.Before;
 import io.cucumber.java.BeforeAll;
 import io.cucumber.java.Scenario;
 import utilsClasses.EventFiringClass;
+import utilsClasses.MailerClass;
 import utilsClasses.PropertiesFIlesHelper;
 
 public class TestBase {
@@ -84,15 +85,17 @@ public void after(Scenario test) {
 	if(test.isFailed()) {
 		byte[] js=((TakesScreenshot)drivers.get()).getScreenshotAs(OutputType.BYTES);
 		test.attach(js, "image/png", test.getName());
+		
 
 	}
 	drivers.get().close();
 
-	}
+
+}
 
 @AfterAll
-public static void afterall() {
-
+public static void afterall() {	
+//MailerClass.prepareEmail();
 }
 	
 public static WebElement getElement(By locator) {

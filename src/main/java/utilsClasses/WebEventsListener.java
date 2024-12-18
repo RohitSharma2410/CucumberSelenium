@@ -25,7 +25,6 @@ import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.support.events.WebDriverListener;
 
 
-
 public class WebEventsListener implements 
 WebDriverListener {
 
@@ -272,6 +271,7 @@ WebDriverListener {
 	public void beforeClick(WebElement element) {
 		// TODO Auto-generated method stub
 		WebDriverListener.super.beforeClick(element);
+		
 
 	}
 
