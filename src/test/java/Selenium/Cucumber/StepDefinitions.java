@@ -44,7 +44,7 @@ TestBase.getElement(string2).sendKeys(string);
     public void user_login_should(String string) {
    
     	assert(TestBase.getElement("dashboardsearchfield").isDisplayed());
-    	System.out.println();
+    	System.out.println("Checking initial pool");
     }
     
 
