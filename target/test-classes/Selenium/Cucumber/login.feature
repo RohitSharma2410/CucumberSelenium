@@ -1,6 +1,6 @@
 Feature: Login
 
-  Scenario Outline: The example
+  Scenario Outline: Login with valid credentials
     Given I am on Login page
     When I enter <username> in "loginusername" field
     And I enter <password> in "loginpassword" field
