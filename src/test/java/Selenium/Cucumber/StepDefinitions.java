@@ -71,7 +71,6 @@ int amountvalue=StringUtilsFunctions.returnOnlyNumeric(TestBase.getElementOnElem
 		(string2,"transaction",string)).getText());
 System.out.println(amountvalue);
 assert(amountvalue==int1);
-assert(1==0);
 }
 
 

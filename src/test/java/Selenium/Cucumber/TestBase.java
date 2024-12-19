@@ -126,7 +126,7 @@ public static WebElement getElementOnElement(String locator,WebElement element) 
 				(pageObjects.getProperty(locator).toString().split("@@@")[1]));
 		
 	 default:
-		
+		System.out.println("change from master");
 		 return element.findElement(By.xpath
 					(pageObjects.getProperty(locator).toString().split("@@@")[1]));
 	}
