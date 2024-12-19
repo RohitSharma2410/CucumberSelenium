@@ -126,7 +126,11 @@ public static WebElement getElementOnElement(String locator,WebElement element) 
 				(pageObjects.getProperty(locator).toString().split("@@@")[1]));
 		
 	 default:
+<<<<<<< HEAD
 		System.out.println("change from master");
+=======
+System.out.println();
+>>>>>>> refs/remotes/origin/main
 		 return element.findElement(By.xpath
 					(pageObjects.getProperty(locator).toString().split("@@@")[1]));
 	}
