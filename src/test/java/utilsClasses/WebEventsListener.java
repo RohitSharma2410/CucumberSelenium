@@ -21,14 +21,14 @@ import org.openqa.selenium.WebDriver.Timeouts;
 import org.openqa.selenium.WebDriver.Window;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.WindowType;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.support.events.WebDriverListener;
 
+import Selenium.Cucumber.TestBase;
 
-public class WebEventsListener implements 
-WebDriverListener {
+public class WebEventsListener implements WebDriverListener {
 
-	
 	@Override
 	public void beforeAnyCall(Object target, Method method, Object[] args) {
 		// TODO Auto-generated method stub
@@ -45,12 +45,19 @@ WebDriverListener {
 	public void onError(Object target, Method method, Object[] args, InvocationTargetException e) {
 		// TODO Auto-generated method stub
 		WebDriverListener.super.onError(target, method, args, e);
+		TestBase.extentTest.get().info("error "+e.getMessage()+" while calling method "+method.getName());	
+
 	}
 
 	@Override
 	public void beforeAnyWebDriverCall(WebDriver driver, Method method, Object[] args) {
 		// TODO Auto-generated method stub
 		WebDriverListener.super.beforeAnyWebDriverCall(driver, method, args);
+		if(driver==null) {
+			TestBase.extentTest.get().info("Driver instance is null");	
+
+		}
+
 	}
 
 	@Override
@@ -63,13 +70,15 @@ WebDriverListener {
 	public void beforeGet(WebDriver driver, String url) {
 		// TODO Auto-generated method stub
 		WebDriverListener.super.beforeGet(driver, url);
-		
+
 	}
 
 	@Override
 	public void afterGet(WebDriver driver, String url) {
 		// TODO Auto-generated method stub
 		WebDriverListener.super.afterGet(driver, url);
+		TestBase.extentTest.get().info("Launched browser with "+url);	
+
 
 	}
 
@@ -84,6 +93,7 @@ WebDriverListener {
 	public void afterGetCurrentUrl(WebDriver driver, String result) {
 		// TODO Auto-generated method stub
 		WebDriverListener.super.afterGetCurrentUrl(driver, result);
+		TestBase.extentTest.get().info("Current URL is "+result);	
 
 	}
 
@@ -98,13 +108,14 @@ WebDriverListener {
 	public void afterGetTitle(WebDriver driver, String result) {
 		// TODO Auto-generated method stub
 		WebDriverListener.super.afterGetTitle(driver, result);
-
+		TestBase.extentTest.get().info("Webpage title is "+result);	
 	}
 
 	@Override
 	public void beforeFindElement(WebDriver driver, By locator) {
 		// TODO Auto-generated method stub
 		WebDriverListener.super.beforeFindElement(driver, locator);
+		TestBase.extentTest.get().info("Looking for web element "+locator);
 
 	}
 
@@ -112,7 +123,9 @@ WebDriverListener {
 	public void afterFindElement(WebDriver driver, By locator, WebElement result) {
 		// TODO Auto-generated method stub
 		WebDriverListener.super.afterFindElement(driver, locator, result);
-		if(result==null) {
+		if (result == null) {
+			TestBase.extentTest.get().info("Unable to find web element "+locator);
+
 		}
 	}
 
@@ -120,7 +133,6 @@ WebDriverListener {
 	public void beforeFindElements(WebDriver driver, By locator) {
 		// TODO Auto-generated method stub
 		WebDriverListener.super.beforeFindElements(driver, locator);
-		
 
 	}
 
@@ -128,8 +140,10 @@ WebDriverListener {
 	public void afterFindElements(WebDriver driver, By locator, List<WebElement> result) {
 		// TODO Auto-generated method stub
 		WebDriverListener.super.afterFindElements(driver, locator, result);
-		
-		if(result.size()==0) {
+
+		if (result.size() == 0) {
+			TestBase.extentTest.get().info("element list size is "+result.size()+" for "+locator);	
+
 		}
 	}
 
@@ -149,16 +163,14 @@ WebDriverListener {
 	public void beforeClose(WebDriver driver) {
 		// TODO Auto-generated method stub
 		WebDriverListener.super.beforeClose(driver);
-		
-		
+
 	}
 
 	@Override
 	public void afterClose(WebDriver driver) {
 		// TODO Auto-generated method stub
 		WebDriverListener.super.afterClose(driver);
-		
-		
+
 	}
 
 	@Override
@@ -186,7 +198,8 @@ WebDriverListener {
 	public void afterGetWindowHandles(WebDriver driver, Set<String> result) {
 		// TODO Auto-generated method stub
 		WebDriverListener.super.afterGetWindowHandles(driver, result);
-		if(result.size()==0) {
+		if (result.size() == 0) {
+
 		}
 	}
 
@@ -271,6 +284,14 @@ WebDriverListener {
 	public void beforeClick(WebElement element) {
 		// TODO Auto-generated method stub
 		WebDriverListener.super.beforeClick(element);
+		if(!element.isEnabled()) {
+		TestBase.extentTest.get().info("element is not enabled");	
+		}
+		Actions actions=new Actions(TestBase.drivers.get());
+		actions.moveToElement(element).build().perform();
+		TestBase.extentTest.get().info("Looking to click web element ");
+
+		
 		
 
 	}
@@ -279,6 +300,8 @@ WebDriverListener {
 	public void afterClick(WebElement element) {
 		// TODO Auto-generated method stub
 		WebDriverListener.super.afterClick(element);
+		TestBase.extentTest.get().info("Clicked");
+
 
 	}
 
@@ -298,6 +321,8 @@ WebDriverListener {
 	public void beforeSendKeys(WebElement element, CharSequence... keysToSend) {
 		// TODO Auto-generated method stub
 		WebDriverListener.super.beforeSendKeys(element, keysToSend);
+		TestBase.extentTest.get().info("Entering value in element "+keysToSend);
+
 
 	}
 
@@ -305,6 +330,7 @@ WebDriverListener {
 	public void afterSendKeys(WebElement element, CharSequence... keysToSend) {
 		// TODO Auto-generated method stub
 		WebDriverListener.super.afterSendKeys(element, keysToSend);
+		TestBase.extentTest.get().info("Entered value in element "+keysToSend);
 
 	}
 
@@ -342,6 +368,8 @@ WebDriverListener {
 	public void afterGetAttribute(WebElement element, String name, String result) {
 		// TODO Auto-generated method stub
 		WebDriverListener.super.afterGetAttribute(element, name, result);
+		TestBase.extentTest.get().info("Fetched attribute value from element "+result);
+
 	}
 
 	@Override
@@ -379,6 +407,8 @@ WebDriverListener {
 	public void afterGetText(WebElement element, String result) {
 		// TODO Auto-generated method stub
 		WebDriverListener.super.afterGetText(element, result);
+		TestBase.extentTest.get().info("Element text value "+result);
+
 
 	}
 
@@ -386,12 +416,16 @@ WebDriverListener {
 	public void beforeFindElement(WebElement element, By locator) {
 		// TODO Auto-generated method stub
 		WebDriverListener.super.beforeFindElement(element, locator);
+		TestBase.extentTest.get().info("Looking for web element "+locator);
+
 	}
 
 	@Override
 	public void afterFindElement(WebElement element, By locator, WebElement result) {
 		// TODO Auto-generated method stub
 		WebDriverListener.super.afterFindElement(element, locator, result);
+		TestBase.extentTest.get().info("Found web element "+locator);
+
 	}
 
 	@Override
@@ -921,6 +955,5 @@ WebDriverListener {
 		// TODO Auto-generated method stub
 		WebDriverListener.super.afterAlert(targetLocator, alert);
 	}
-	
 
 }
