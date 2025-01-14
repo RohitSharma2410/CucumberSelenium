@@ -15,9 +15,5 @@ public class RunCucumberTest extends AbstractTestNGCucumberTests {
 	public Object[][] scenarios() {
 		return super.scenarios();
 	}
-	@Override
-	 public void setUpClass(ITestContext context) {
-	       super.setUpClass(context);
-	    }
-
+	
 }
