@@ -1,3 +1,4 @@
+@API
 Feature: Login
 
   Scenario Outline: Login with <username> and <password>
