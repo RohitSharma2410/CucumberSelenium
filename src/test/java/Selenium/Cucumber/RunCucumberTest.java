@@ -9,10 +9,11 @@ import io.cucumber.testng.CucumberOptions;
 glue = { "Selenium.Cucumber","TestBase" })
 public class RunCucumberTest extends AbstractTestNGCucumberTests {
 	public static int totalThreads = -1;
-StepDefinitions.staticMethod();
+	
 	@Override
 	@DataProvider(parallel = true)
 	public Object[][] scenarios() {
+			StepDefinitions.staticMethod();
 		return super.scenarios();
 	}
 	
