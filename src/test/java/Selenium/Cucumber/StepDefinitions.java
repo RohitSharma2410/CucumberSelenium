@@ -8,6 +8,10 @@ import io.cucumber.java.en.When;
 import utilsClasses.StringUtilsFunctions;
 
 public class StepDefinitions {
+
+public static void staticMethod(){
+}
+	
 	@Given("an example scenario")
 	public void anExampleScenario() {
 	}
