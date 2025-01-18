@@ -63,11 +63,11 @@ public class TestBase {
 		report = new ExtentReports();
 
 		ExtentSparkReporter rs = new ExtentSparkReporter(
-				"/Users/rohitsharma" + "/eclipse-workspace/Cucumber/target/SparkReport.html");
+				"/Users/rohitsharma" + "/eclipse-workspace/CucumberSelenium/target/SparkReport.html");
 		
 		
 		rs.loadXMLConfig(new File("/Users/rohitsharma/eclipse-workspace"
-				+ "/Cucumber/src/main/resources/extent.xml"));
+				+ "/CucumberSelenium/src/main/resources/extent.xml"));
 		report.attachReporter(rs);
 	}
 

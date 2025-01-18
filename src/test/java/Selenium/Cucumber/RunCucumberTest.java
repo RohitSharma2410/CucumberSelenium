@@ -13,7 +13,7 @@ public class RunCucumberTest extends AbstractTestNGCucumberTests {
 	@Override
 	@DataProvider(parallel = true)
 	public Object[][] scenarios() {
-			StepDefinitions.staticMethod();
+
 		return super.scenarios();
 	}
 	
