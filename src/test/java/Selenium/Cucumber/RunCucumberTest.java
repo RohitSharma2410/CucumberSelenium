@@ -6,9 +6,8 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(features = { "src/test/resources/Selenium/Cucumber" },
-glue = { "Selenium.Cucumber","TestBase" })
+glue = { "Selenium.Cucumber","Selenium.Cucumber.TestBase" })
 public class RunCucumberTest extends AbstractTestNGCucumberTests {
-	public static int totalThreads = -1;
 	
 	@Override
 	@DataProvider(parallel = true)

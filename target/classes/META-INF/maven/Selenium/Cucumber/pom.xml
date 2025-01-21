@@ -10,13 +10,14 @@
 	<packaging>jar</packaging>
 
 	<properties>
+	
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<cucumber>7.20.1</cucumber>
 	</properties>
 
 
-	<dependencies>
 
+	<dependencies>
 
 
 		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-testng -->
@@ -215,10 +216,12 @@
 					<useUnlimitedThreads>true</useUnlimitedThreads>
 					<includes>**/*.RunCucumber*.java</includes>
 					<properties>
+					
 					<property>
 					<name>dataproviderthreadcount</name>
 					<value>10</value>
 					</property>
+				
 					</properties>
 				</configuration>
 			</plugin>
