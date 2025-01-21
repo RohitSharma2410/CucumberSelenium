@@ -1,6 +1,10 @@
 package Selenium.Cucumber;
 
+import java.util.List;
+import java.util.Map;
+
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -9,7 +13,19 @@ import utilsClasses.StringUtilsFunctions;
 
 public class StepDefinitions {
 
-
+	@When("data is like")
+	public void data_is_like(List<Map<Object,Object>> data) {
+	    // Write code here that turns the phrase above into concrete actions
+	    // For automatic transformation, change DataTable to one of
+	    // E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or
+	    // Map<K, List<V>>. E,K,V must be a String, Integer, Float,
+	    // Double, Byte, Short, Long, BigInteger or BigDecimal.
+	    //
+	    // For other transformations you can register a DataTableType.
+		
+		data.forEach(t->System.out.println(t));
+		
+	}
 	
 	@Given("an example scenario")
 	public void anExampleScenario() {

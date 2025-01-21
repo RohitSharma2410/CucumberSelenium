@@ -73,7 +73,7 @@ public class TestBase {
 		report.attachReporter(rs);
 	}
 
-	@Before
+	@Before()
 	public void before_or_after(Scenario test) {
 		extentTest.set(report.createTest(test.getName()));
 		extentTest.get().assignAuthor("Rohit Sharma");
