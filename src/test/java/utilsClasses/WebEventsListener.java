@@ -45,7 +45,7 @@ public class WebEventsListener implements WebDriverListener {
 	public void onError(Object target, Method method, Object[] args, InvocationTargetException e) {
 		// TODO Auto-generated method stub
 		WebDriverListener.super.onError(target, method, args, e);
-		TestBase.extentTest.get().info("error "+e.getMessage()+" while calling method "+method.getName());	
+		TestBase.extentTest.get().info("error " + e.getMessage() + " while calling method " + method.getName());
 
 	}
 
@@ -53,8 +53,8 @@ public class WebEventsListener implements WebDriverListener {
 	public void beforeAnyWebDriverCall(WebDriver driver, Method method, Object[] args) {
 		// TODO Auto-generated method stub
 		WebDriverListener.super.beforeAnyWebDriverCall(driver, method, args);
-		if(driver==null) {
-			TestBase.extentTest.get().info("Driver instance is null");	
+		if (driver == null) {
+			TestBase.extentTest.get().info("Driver instance is null");
 
 		}
 
@@ -77,8 +77,7 @@ public class WebEventsListener implements WebDriverListener {
 	public void afterGet(WebDriver driver, String url) {
 		// TODO Auto-generated method stub
 		WebDriverListener.super.afterGet(driver, url);
-		TestBase.extentTest.get().info("Launched browser with "+url);	
-
+		TestBase.extentTest.get().info("Launched browser with " + url);
 
 	}
 
@@ -93,7 +92,7 @@ public class WebEventsListener implements WebDriverListener {
 	public void afterGetCurrentUrl(WebDriver driver, String result) {
 		// TODO Auto-generated method stub
 		WebDriverListener.super.afterGetCurrentUrl(driver, result);
-		TestBase.extentTest.get().info("Current URL is "+result);	
+		TestBase.extentTest.get().info("Current URL is " + result);
 
 	}
 
@@ -108,14 +107,14 @@ public class WebEventsListener implements WebDriverListener {
 	public void afterGetTitle(WebDriver driver, String result) {
 		// TODO Auto-generated method stub
 		WebDriverListener.super.afterGetTitle(driver, result);
-		TestBase.extentTest.get().info("Webpage title is "+result);	
+		TestBase.extentTest.get().info("Webpage title is " + result);
 	}
 
 	@Override
 	public void beforeFindElement(WebDriver driver, By locator) {
 		// TODO Auto-generated method stub
 		WebDriverListener.super.beforeFindElement(driver, locator);
-		TestBase.extentTest.get().info("Looking for web element "+locator);
+		TestBase.extentTest.get().info("Looking for web element " + locator);
 
 	}
 
@@ -124,7 +123,7 @@ public class WebEventsListener implements WebDriverListener {
 		// TODO Auto-generated method stub
 		WebDriverListener.super.afterFindElement(driver, locator, result);
 		if (result == null) {
-			TestBase.extentTest.get().info("Unable to find web element "+locator);
+			TestBase.extentTest.get().info("Unable to find web element " + locator);
 
 		}
 	}
@@ -142,7 +141,7 @@ public class WebEventsListener implements WebDriverListener {
 		WebDriverListener.super.afterFindElements(driver, locator, result);
 
 		if (result.size() == 0) {
-			TestBase.extentTest.get().info("element list size is "+result.size()+" for "+locator);	
+			TestBase.extentTest.get().info("element list size is " + result.size() + " for " + locator);
 
 		}
 	}
@@ -284,15 +283,12 @@ public class WebEventsListener implements WebDriverListener {
 	public void beforeClick(WebElement element) {
 		// TODO Auto-generated method stub
 		WebDriverListener.super.beforeClick(element);
-		if(!element.isEnabled()) {
-		TestBase.extentTest.get().info("element is not enabled");	
+		if (!element.isEnabled()) {
+			TestBase.extentTest.get().info("element is not enabled");
 		}
-		Actions actions=new Actions(TestBase.drivers.get());
+		Actions actions = new Actions(TestBase.drivers.get());
 		actions.moveToElement(element).build().perform();
 		TestBase.extentTest.get().info("Looking to click web element ");
-
-		
-		
 
 	}
 
@@ -301,7 +297,6 @@ public class WebEventsListener implements WebDriverListener {
 		// TODO Auto-generated method stub
 		WebDriverListener.super.afterClick(element);
 		TestBase.extentTest.get().info("Clicked");
-
 
 	}
 
@@ -321,8 +316,7 @@ public class WebEventsListener implements WebDriverListener {
 	public void beforeSendKeys(WebElement element, CharSequence... keysToSend) {
 		// TODO Auto-generated method stub
 		WebDriverListener.super.beforeSendKeys(element, keysToSend);
-		TestBase.extentTest.get().info("Entering value in element "+keysToSend);
-
+		TestBase.extentTest.get().info("Entering value in element " + keysToSend);
 
 	}
 
@@ -330,7 +324,7 @@ public class WebEventsListener implements WebDriverListener {
 	public void afterSendKeys(WebElement element, CharSequence... keysToSend) {
 		// TODO Auto-generated method stub
 		WebDriverListener.super.afterSendKeys(element, keysToSend);
-		TestBase.extentTest.get().info("Entered value in element "+keysToSend);
+		TestBase.extentTest.get().info("Entered value in element " + keysToSend);
 
 	}
 
@@ -368,7 +362,7 @@ public class WebEventsListener implements WebDriverListener {
 	public void afterGetAttribute(WebElement element, String name, String result) {
 		// TODO Auto-generated method stub
 		WebDriverListener.super.afterGetAttribute(element, name, result);
-		TestBase.extentTest.get().info("Fetched attribute value from element "+result);
+		TestBase.extentTest.get().info("Fetched attribute value from element " + result);
 
 	}
 
@@ -407,8 +401,7 @@ public class WebEventsListener implements WebDriverListener {
 	public void afterGetText(WebElement element, String result) {
 		// TODO Auto-generated method stub
 		WebDriverListener.super.afterGetText(element, result);
-		TestBase.extentTest.get().info("Element text value "+result);
-
+		TestBase.extentTest.get().info("Element text value " + result);
 
 	}
 
@@ -416,7 +409,7 @@ public class WebEventsListener implements WebDriverListener {
 	public void beforeFindElement(WebElement element, By locator) {
 		// TODO Auto-generated method stub
 		WebDriverListener.super.beforeFindElement(element, locator);
-		TestBase.extentTest.get().info("Looking for web element "+locator);
+		TestBase.extentTest.get().info("Looking for web element " + locator);
 
 	}
 
@@ -424,7 +417,7 @@ public class WebEventsListener implements WebDriverListener {
 	public void afterFindElement(WebElement element, By locator, WebElement result) {
 		// TODO Auto-generated method stub
 		WebDriverListener.super.afterFindElement(element, locator, result);
-		TestBase.extentTest.get().info("Found web element "+locator);
+		TestBase.extentTest.get().info("Found web element " + locator);
 
 	}
 

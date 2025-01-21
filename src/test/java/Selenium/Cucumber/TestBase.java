@@ -1,7 +1,5 @@
 package Selenium.Cucumber;
 
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
@@ -24,10 +22,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
-import com.aventstack.extentreports.reporter.configuration.ExtentSparkReporterConfig;
-import com.aventstack.extentreports.reporter.configuration.ExtentSparkReporterConfig.ExtentSparkReporterConfigBuilder;
-import com.aventstack.extentreports.reporter.configuration.Theme;
-import com.aventstack.extentreports.reporter.configuration.ViewConfigurer;
 
 import io.cucumber.java.After;
 import io.cucumber.java.AfterAll;
@@ -50,12 +44,10 @@ public class TestBase {
 	public static void before_or_after_all() throws IOException {
 		if (pageObjects == null) {
 			pageObjects = new PropertiesFIlesHelper(
-					System.getProperty("user.dir").concat("/src/main/resources/" 
-			+ "pageObjects.properties"));
+					System.getProperty("user.dir").concat("/src/main/resources/" + "pageObjects.properties"));
 
 			config = new PropertiesFIlesHelper(
-					System.getProperty("user.dir").concat("/src/main/resources/" 
-			+ "config.properties"));
+					System.getProperty("user.dir").concat("/src/main/resources/" + "config.properties"));
 
 		}
 		drivers = new ThreadLocal<>();
@@ -66,10 +58,9 @@ public class TestBase {
 
 		ExtentSparkReporter rs = new ExtentSparkReporter(
 				"/Users/rohitsharma" + "/eclipse-workspace/CucumberSelenium/target/SparkReport.html");
-		
-		
-		rs.loadXMLConfig(new File("/Users/rohitsharma/eclipse-workspace"
-				+ "/CucumberSelenium/src/main/resources/extent.xml"));
+
+		rs.loadXMLConfig(
+				new File("/Users/rohitsharma/eclipse-workspace" + "/CucumberSelenium/src/main/resources/extent.xml"));
 		report.attachReporter(rs);
 	}
 
