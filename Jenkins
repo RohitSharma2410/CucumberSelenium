@@ -1,0 +1,23 @@
+pipeline {
+stages{
+stage("build"){
+steps{
+sh 'git pull'
+}
+
+}
+stage("test"){
+steps{
+sh 'mvn test'
+}
+}
+
+
+
+
+}
+
+
+
+
+}
