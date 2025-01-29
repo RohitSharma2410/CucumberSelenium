@@ -11,6 +11,7 @@ stage("test"){
 steps{
 sh 'mvn test'
  publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'target', reportFiles: 'SparkReport.html', reportName: 'TestReport.html', reportTitles: '', useWrapperFileDirectly: true])
+cucumber buildStatus: 'UNCHANGED', customCssFiles: '', customJsFiles: '', failedFeaturesNumber: -1, failedScenariosNumber: -1, failedStepsNumber: -1, fileIncludePattern: '**/*.json', jsonReportDirectory: 'target/cucumber-reports', pendingStepsNumber: -1, reportTitle: 'TestReport', skippedStepsNumber: -1, sortingMethod: 'ALPHABETICAL', undefinedStepsNumber: -1
 }
 }
     
