@@ -13,22 +13,19 @@ sh 'mvn test'
  
 }
 }
-    stage('Publish Cucumber Reports') {
+      stage('Publish Cucumber Report') {
 
-                steps {
+            steps {
 
-                    publishCucumberResults( 
+                publishCucumberReports(reportsDirectory: 'target/cucumber-report', 
 
-                        formats: ['html', 'json'],
+                                    reportName: 'Cucumber Report', 
 
-                        cucumberReportDir: 'target/cucumber-reports' 
+                                    reportTitle: 'Cucumber Test Results')
 
-                    )
+            }
 
-                }
-
-            
-}
+        }
 
 
 
