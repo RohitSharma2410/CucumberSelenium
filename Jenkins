@@ -10,7 +10,24 @@ stages{
 stage("test"){
 steps{
 sh 'mvn test'
+ 
 }
+}
+    stage('Publish Cucumber Reports') {
+
+                steps {
+
+                    publishCucumberResults( 
+
+                        formats: ['html', 'json'],
+
+                        cucumberReportDir: 'target/cucumber-reports' 
+
+                    )
+
+                }
+
+            
 }
 
 
