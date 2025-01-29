@@ -10,22 +10,16 @@ stages{
 stage("test"){
 steps{
 sh 'mvn test'
- 
+ publishHTML (target : [allowMissing: false,
+ alwaysLinkToLastBuild: true,
+ keepAll: true,
+ reportDir: 'reports',
+ reportFiles: 'myreport.html',
+ reportName: 'My Reports',
+ reportTitles: 'The Report'])
 }
 }
-      stage('Publish Cucumber Report') {
-
-            steps {
-
-                publishCucumberReports(reportsDirectory: 'target/cucumber-report', 
-
-                                    reportName: 'Cucumber Report', 
-
-                                    reportTitle: 'Cucumber Test Results')
-
-            }
-
-        }
+    
 
 
 
