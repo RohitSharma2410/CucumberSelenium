@@ -62,10 +62,10 @@ public class TestBase {
 		report = new ExtentReports();
 
 		ExtentSparkReporter rs = new ExtentSparkReporter(
-				"/Users/rohitsharma" + "/eclipse-workspace/CucumberSelenium/target/SparkReport.html");
+				System.getProperty("user.dir").concat("/target/SparkReport.html"));
 
 		rs.loadXMLConfig(
-				new File("/Users/rohitsharma/eclipse-workspace" + "/CucumberSelenium/src/main/resources/extent.xml"));
+				new File(System.getProperty("user.dir").concat("/src/test/resources/extent.xml")));
 		report.attachReporter(rs);
 	}
 
@@ -103,7 +103,7 @@ public class TestBase {
 			test.attach(js, "image/png", test.getName());
 
 			TakesScreenshot ts = (TakesScreenshot) drivers.get();
-			File file = new File("/screenshots/test.png");
+			File file = new File(System.getProperty("user.dir").concat("/screenshots/"+test.getName()+".png"));
 			FileUtils.copyFile(ts.getScreenshotAs(OutputType.FILE), file);
 			extentTest.get().addScreenCaptureFromPath(file.getAbsolutePath());
 
