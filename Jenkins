@@ -10,13 +10,7 @@ stages{
 stage("test"){
 steps{
 sh 'mvn test'
- publishHTML (target : [allowMissing: false,
- alwaysLinkToLastBuild: true,
- keepAll: true,
- reportDir: 'reports',
- reportFiles: 'myreport.html',
- reportName: 'My Reports',
- reportTitles: 'The Report'])
+ publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: '/target', reportFiles: 'SparkReport.html', reportName: 'TestReport', reportTitles: '', useWrapperFileDirectly: true])
 }
 }
     
