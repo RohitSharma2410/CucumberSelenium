@@ -3,6 +3,7 @@ package Selenium.Cucumber;
 import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.List;
 import java.util.Set;
 
 import org.apache.commons.io.FileUtils;
@@ -11,12 +12,16 @@ import org.openqa.selenium.Cookie;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.UnexpectedAlertBehaviour;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.aventstack.extentreports.ExtentReports;
@@ -66,16 +71,20 @@ public class TestBase {
 
 	@Before()
 	public void before_or_after(Scenario test) {
+		
 		extentTest.set(report.createTest(test.getName()));
 		extentTest.get().assignAuthor("Rohit Sharma");
 		switch (config.getProperty("browser").toString().toLowerCase()) {
 		case "chrome":
 			ChromeOptions options = new ChromeOptions();
 			options.setAcceptInsecureCerts(true);
+			options.setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.IGNORE);
 			drivers.set(new ChromeDriver(options));
 			break;
 		case "firefox":
-			drivers.set(new FirefoxDriver());
+			FirefoxOptions foptions=new FirefoxOptions();
+			foptions.setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.IGNORE);
+			drivers.set(new FirefoxDriver(foptions));
 			break;
 		}
 		drivers.set(new EventFiringClass().getDriver(drivers.get()));
@@ -115,9 +124,12 @@ public class TestBase {
 	}
 
 	public static WebElement getElement(String locator) {
+		System.out.println("locator is "+locator);
 		String locatortype = pageObjects.getProperty(locator).toString().split("@@@")[0];
 		switch (locatortype) {
 		case "xpath":
+			System.out.println("locator value are "+pageObjects.getProperty(locator).toString().split("@@@")[1]);
+	
 
 			return drivers.get().findElement(By.xpath(pageObjects.getProperty(locator).toString().split("@@@")[1]));
 
@@ -127,7 +139,22 @@ public class TestBase {
 		}
 
 	}
+	public static List<WebElement> getElements(String locator) {
+		System.out.println("locator is "+locator);
+		String locatortype = pageObjects.getProperty(locator).toString().split("@@@")[0];
+		switch (locatortype) {
+		case "xpath":
+			System.out.println("locator value are "+pageObjects.getProperty(locator).toString().split("@@@")[1]);
+	
 
+			return drivers.get().findElements(By.xpath(pageObjects.getProperty(locator).toString().split("@@@")[1]));
+
+		default:
+
+			return drivers.get().findElements(By.xpath(pageObjects.getProperty(locator).toString().split("@@@")[1]));
+		}
+
+	}
 	public static WebElement getElementOnElement(String locator, WebElement element) {
 		String locatortype = pageObjects.getProperty(locator).toString().split("@@@")[0];
 		switch (locatortype) {

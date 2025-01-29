@@ -419,6 +419,7 @@ public class WebEventsListener implements WebDriverListener {
 		WebDriverListener.super.afterFindElement(element, locator, result);
 		TestBase.extentTest.get().info("Found web element " + locator);
 
+
 	}
 
 	@Override

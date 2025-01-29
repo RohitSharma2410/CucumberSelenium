@@ -6,7 +6,7 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(features = { "src/test/resources/Selenium/Cucumber" }, glue = { "Selenium.Cucumber",
-		"Selenium.Cucumber.TestBase" })
+		"Selenium.Cucumber.TestBase" },tags= "@Hookup")
 public class RunCucumberTest extends AbstractTestNGCucumberTests {
 
 	@Override
