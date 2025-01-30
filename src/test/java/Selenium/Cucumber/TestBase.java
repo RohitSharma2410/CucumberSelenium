@@ -20,10 +20,9 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.remote.CapabilityType;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
+import org.testng.ITestListener;
+import org.testng.ITestResult;
 import org.testng.asserts.SoftAssert;
 
 import com.aventstack.extentreports.ExtentReports;
@@ -39,6 +38,8 @@ import utilsClasses.EventFiringClass;
 import utilsClasses.PropertiesFIlesHelper;
 
 public class TestBase {
+	
+
 	public static PropertiesFIlesHelper pageObjects = null;
 	public static PropertiesFIlesHelper config = null;
 	public static ThreadLocal<WebDriver> drivers = null;
@@ -115,8 +116,8 @@ catch(AssertionError e) {
 			FileUtils.copyFile(ts.getScreenshotAs(OutputType.FILE), file);
 			extentTest.get().addScreenCaptureFromPath(file.getAbsolutePath());
 		extentTest.get().fail(test.getName());
+		test.log(e.getMessage());
 		}
-		
 		throw new AssertionError();
 		
 }
