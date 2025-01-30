@@ -2,6 +2,7 @@
 /Users/rohitsharma/eclipse-workspace/MyAutomationProject/src/test/java/Selenium/Cucumber/StepDefinitions.java
 /Users/rohitsharma/eclipse-workspace/MyAutomationProject/src/test/java/Selenium/Cucumber/TestBase.java
 /Users/rohitsharma/eclipse-workspace/MyAutomationProject/src/test/java/pojoresponseClasses/Item.java
+/Users/rohitsharma/eclipse-workspace/MyAutomationProject/src/test/java/utilsClasses/CustomException.java
 /Users/rohitsharma/eclipse-workspace/MyAutomationProject/src/test/java/utilsClasses/EventFiringClass.java
 /Users/rohitsharma/eclipse-workspace/MyAutomationProject/src/test/java/utilsClasses/MailerClass.java
 /Users/rohitsharma/eclipse-workspace/MyAutomationProject/src/test/java/utilsClasses/PropertiesFIlesHelper.java

@@ -20,13 +20,14 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
+import io.cucumber.java.After;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import utilsClasses.StringUtilsFunctions;
 
 public class StepDefinitions {
-
 	@When("data is like")
 	public void data_is_like(List<Map<Object, Object>> data) {
 		// Write code here that turns the phrase above into concrete actions
@@ -54,6 +55,7 @@ public void i_autheticate_user_with_credentials() {
 @Then("following {string} should be available on page")
 public void following_should_be_available_on_page(String string) {
     // Write code here that turns the phrase above into concrete actions
+	TestBase.scenarios.get().log("Assert "+string+ "is visible on page");
 	TestBase.assertions.get().assertTrue(TestBase.getElement(string).isDisplayed());
    
 }
@@ -89,6 +91,8 @@ public void validate_all_of(String string) throws MalformedURLException, IOExcep
         conn.setRequestMethod("HEAD");
         conn.connect();
         System.out.println(conn.getResponseCode());
+		TestBase.scenarios.get().log(assertionCheckValue(conn.getResponseCode(),200));
+
         TestBase.assertions.get().assertTrue(conn.getResponseCode()==200);
 }
 }
@@ -109,7 +113,7 @@ public void dragAndDrop(String string,String string2) {
 
 @Then("element {string} should be draged to target successfully")
 public void dragSuccess(String string) {
-	
+	TestBase.scenarios.get().log("Asserting step");
 	TestBase.assertions.get().assertTrue(TestBase.getElements("DragElements").get(1).getLocation().getY()==TestBase.getElement(string).getLocation().getY());
 	
 }
@@ -127,6 +131,8 @@ public void alert_should_be_available_on_the_page() {
     try{TestBase.drivers.get().switchTo().alert().dismiss();
     }
     catch(NoAlertPresentException e) {
+		TestBase.scenarios.get().log("Assertion failed");
+
     	new SoftAssert().fail("Alert is not pop up");
     }
 }
@@ -172,14 +178,21 @@ public void alert_should_be_available_on_the_page() {
 			String valueOfStatus = TestBase.getElementOnElement("allTransactionsStatus",
 					TestBase.getElementWithUpdatedValue(string2, "transaction", string)).getText();
 			System.out.println(valueOfStatus);
+			TestBase.scenarios.get().log(assertionCheckValue(valueOfStatus,string3));
+
 			TestBase.assertions.get().assertTrue (valueOfStatus.equalsIgnoreCase(string3));
 			int amountvalue = StringUtilsFunctions
 					.returnOnlyNumeric(TestBase.getElementOnElement("alltransactionsamount",
 							TestBase.getElementWithUpdatedValue(string2, "transaction", string)).getText());
-			System.out.println(amountvalue);
+			TestBase.scenarios.get().log(assertionCheckValue(amountvalue,int1));
 			TestBase.assertions.get().assertTrue (amountvalue == int1);
 		}
 
+	}
+	
+	
+	private String assertionCheckValue(Object actual,Object expected) {
+		return "Asserting actual"+actual+ " against expected"+expected;
 	}
 
 }

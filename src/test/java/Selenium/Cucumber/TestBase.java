@@ -39,7 +39,7 @@ import utilsClasses.PropertiesFIlesHelper;
 
 public class TestBase {
 	
-
+public static ThreadLocal<Scenario>scenarios=null;
 	public static PropertiesFIlesHelper pageObjects = null;
 	public static PropertiesFIlesHelper config = null;
 	public static ThreadLocal<WebDriver> drivers = null;
@@ -48,6 +48,7 @@ public class TestBase {
 	public static ThreadLocal<ExtentTest> extentTest = null;
 	public static ExtentReports report = null;
 	public static ThreadLocal<SoftAssert> assertions=null;
+	
 
 	@BeforeAll
 	public static void before_or_after_all() throws IOException {
@@ -64,6 +65,7 @@ public class TestBase {
 		wait = new ThreadLocal<>();
 		extentTest = new ThreadLocal<>();
 		report = new ExtentReports();
+		scenarios=new ThreadLocal<>();
 assertions=new ThreadLocal<>();
 		ExtentSparkReporter rs = new ExtentSparkReporter(
 				System.getProperty("user.dir").concat("/target/SparkReport.html"));
@@ -75,7 +77,7 @@ assertions=new ThreadLocal<>();
 
 	@Before()
 	public void before_or_after(Scenario test) {
-		
+		scenarios.set(test);
 		extentTest.set(report.createTest(test.getName()));
 		extentTest.get().assignAuthor("Rohit Sharma");
 		assertions.set(new SoftAssert());
@@ -83,7 +85,7 @@ assertions=new ThreadLocal<>();
 		case "chrome":
 			ChromeOptions options = new ChromeOptions();
 			options.setAcceptInsecureCerts(true);
-			options.addArguments("--headless=new");
+			//options.addArguments("--headless=new");
 			options.setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.IGNORE);
 			drivers.set(new ChromeDriver(options));
 			break;
@@ -101,8 +103,8 @@ assertions=new ThreadLocal<>();
 		wait.set((new WebDriverWait(drivers.get(), Duration.ofSeconds(30))));
 	}
 
-	@After
-	public void after(Scenario test) throws IOException {
+	@After(order=1)
+	public void after(Scenario test) throws Exception {
 try{TestBase.assertions.get().assertAll();
 }
 catch(AssertionError e) {
@@ -118,12 +120,12 @@ catch(AssertionError e) {
 		extentTest.get().fail(test.getName());
 		test.log(e.getMessage());
 		}
-		throw new AssertionError();
+		throw new Exception("Assertion error for test "+test.getName());
 		
 }
 	finally {	
 if(TestBase.drivers.get().getWindowHandles().size()!=0) {
-	TestBase.drivers.get().close();
+	TestBase.drivers.get().quit();
 }
 	}
 	}
