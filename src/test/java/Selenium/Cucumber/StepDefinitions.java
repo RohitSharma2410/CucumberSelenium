@@ -18,6 +18,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -53,7 +54,7 @@ public void i_autheticate_user_with_credentials() {
 @Then("following {string} should be available on page")
 public void following_should_be_available_on_page(String string) {
     // Write code here that turns the phrase above into concrete actions
-	assert(TestBase.getElement(string).isDisplayed());
+	TestBase.assertions.get().assertTrue(TestBase.getElement(string).isDisplayed());
    
 }
 
@@ -88,7 +89,7 @@ public void validate_all_of(String string) throws MalformedURLException, IOExcep
         conn.setRequestMethod("HEAD");
         conn.connect();
         System.out.println(conn.getResponseCode());
-        assert(conn.getResponseCode()==200);
+        TestBase.assertions.get().assertTrue(conn.getResponseCode()==200);
 }
 }
 @Then("all links should populate all of link status")
@@ -109,7 +110,7 @@ public void dragAndDrop(String string,String string2) {
 @Then("element {string} should be draged to target successfully")
 public void dragSuccess(String string) {
 	
-	assert(TestBase.getElements("DragElements").get(1).getLocation().getY()==TestBase.getElement(string).getLocation().getY());
+	TestBase.assertions.get().assertTrue(TestBase.getElements("DragElements").get(1).getLocation().getY()==TestBase.getElement(string).getLocation().getY());
 	
 }
 @When("I right click on {string}")
@@ -126,7 +127,7 @@ public void alert_should_be_available_on_the_page() {
     try{TestBase.drivers.get().switchTo().alert().dismiss();
     }
     catch(NoAlertPresentException e) {
-    	Assert.fail("Alert is not pop up");
+    	new SoftAssert().fail("Alert is not pop up");
     }
 }
 
@@ -146,8 +147,7 @@ public void alert_should_be_available_on_the_page() {
 
 	@Then("User login should see {string}")
 	public void user_login_should(String string) {
-
-		assert (TestBase.getElement("dashboardsearchfield").isDisplayed());
+		TestBase.assertions.get().assertTrue(TestBase.getElement("dashboardsearchfield").isDisplayed());
 		System.out.println("Checking initial pool");
 	}
 
@@ -172,12 +172,12 @@ public void alert_should_be_available_on_the_page() {
 			String valueOfStatus = TestBase.getElementOnElement("allTransactionsStatus",
 					TestBase.getElementWithUpdatedValue(string2, "transaction", string)).getText();
 			System.out.println(valueOfStatus);
-			assert (valueOfStatus.equalsIgnoreCase(string3));
+			TestBase.assertions.get().assertTrue (valueOfStatus.equalsIgnoreCase(string3));
 			int amountvalue = StringUtilsFunctions
 					.returnOnlyNumeric(TestBase.getElementOnElement("alltransactionsamount",
 							TestBase.getElementWithUpdatedValue(string2, "transaction", string)).getText());
 			System.out.println(amountvalue);
-			assert (amountvalue == int1);
+			TestBase.assertions.get().assertTrue (amountvalue == int1);
 		}
 
 	}

@@ -20,10 +20,10 @@ Feature: All Possible Situations
     And I click on "BasicAuth"
     Then following "BasicAuthSuceessmessage" should be available on page
     
-     #Scenario: Validate BrokenImages page
-    #Given I am on Dashboard page
-    #When I click on "BrokenImages"
-    #Then Validate all of response for "AllImageesLink"
+     Scenario: Validate BrokenImages page
+    Given I am on Dashboard page
+    When I click on "BrokenImages"
+    Then Validate all of response for "AllImageesLink"
    
     
      Scenario: Validate ChallengingDOM elements page

@@ -23,6 +23,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
@@ -44,6 +46,7 @@ public class TestBase {
 	public static ThreadLocal<JavascriptExecutor> js = null;
 	public static ThreadLocal<ExtentTest> extentTest = null;
 	public static ExtentReports report = null;
+	public static ThreadLocal<SoftAssert> assertions=null;
 
 	@BeforeAll
 	public static void before_or_after_all() throws IOException {
@@ -60,7 +63,7 @@ public class TestBase {
 		wait = new ThreadLocal<>();
 		extentTest = new ThreadLocal<>();
 		report = new ExtentReports();
-
+assertions=new ThreadLocal<>();
 		ExtentSparkReporter rs = new ExtentSparkReporter(
 				System.getProperty("user.dir").concat("/target/SparkReport.html"));
 
@@ -74,10 +77,12 @@ public class TestBase {
 		
 		extentTest.set(report.createTest(test.getName()));
 		extentTest.get().assignAuthor("Rohit Sharma");
+		assertions.set(new SoftAssert());
 		switch (config.getProperty("browser").toString().toLowerCase()) {
 		case "chrome":
 			ChromeOptions options = new ChromeOptions();
 			options.setAcceptInsecureCerts(true);
+			options.addArguments("--headless=new");
 			options.setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.IGNORE);
 			drivers.set(new ChromeDriver(options));
 			break;
@@ -97,19 +102,29 @@ public class TestBase {
 
 	@After
 	public void after(Scenario test) throws IOException {
-
+try{TestBase.assertions.get().assertAll();
+}
+catch(AssertionError e) {
 		if (test.isFailed()) {
-			byte[] js = ((TakesScreenshot) drivers.get()).getScreenshotAs(OutputType.BYTES);
+			byte[] js = ((TakesScreenshot) drivers.get()).
+					getScreenshotAs(OutputType.BYTES);
 			test.attach(js, "image/png", test.getName());
-
 			TakesScreenshot ts = (TakesScreenshot) drivers.get();
-			File file = new File(System.getProperty("user.dir").concat("/screenshots/"+test.getName()+".png"));
+			File file = new File(System.getProperty("user.dir").
+					concat("/screenshots/"+test.getName()+".png"));
 			FileUtils.copyFile(ts.getScreenshotAs(OutputType.FILE), file);
 			extentTest.get().addScreenCaptureFromPath(file.getAbsolutePath());
-
+		extentTest.get().fail(test.getName());
 		}
-		drivers.get().close();
-
+		
+		throw new AssertionError();
+		
+}
+	finally {	
+if(TestBase.drivers.get().getWindowHandles().size()!=0) {
+	TestBase.drivers.get().close();
+}
+	}
 	}
 
 	@AfterAll
