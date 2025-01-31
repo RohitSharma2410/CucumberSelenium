@@ -17,34 +17,13 @@ success {
                               allowMissing: false, 
                               alwaysLinkToLastBuild: false, 
                               keepAll: false, 
-                              reportDir: 'target/extent', 
+                              reportDir: 'target/surefire-reports', 
                               reportFiles: 'SparkReport.html', 
                               reportName: 'ExtentReport', 
                               reportTitles: '', 
                               useWrapperFileDirectly: true])
                 }
-
-
-
-cucumber buildStatus: 'UNCHANGED', customCssFiles: '', customJsFiles: '', failedFeaturesNumber: -1, failedScenariosNumber: -1, failedStepsNumber: -1, fileIncludePattern: '**/*.json', jsonReportDirectory: 'target/cucumber-reports', pendingStepsNumber: -1, reportTitle: 'TestReport', skippedStepsNumber: -1, sortingMethod: 'ALPHABETICAL', undefinedStepsNumber: -1
 }
-post {
-                always {
-                    allure includeProperties:
-                     false,
-                     jdk: '',
-                     results: [[path: 'allure-results']]
-                }
-            }
+} 
 }
-    
-
-
-
-
-}
-
-
-
-
 }

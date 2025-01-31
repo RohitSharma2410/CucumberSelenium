@@ -70,7 +70,7 @@ public static ThreadLocal<Scenario>scenarios=null;
 				"sandbox allow-same-origin; default-src 'self';");
 		
 		ExtentSparkReporter rs = new ExtentSparkReporter(
-				System.getProperty("user.dir").concat("/target/extent/SparkReport.html"));
+				System.getProperty("user.dir").concat("/target/surefire-reports/SparkReport.html"));
 
 		rs.loadXMLConfig(
 				new File(System.getProperty("user.dir").concat("/src/test/resources/extent.xml")));
