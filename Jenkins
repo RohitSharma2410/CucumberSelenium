@@ -20,17 +20,13 @@ maven 'M3'
                  
                 // If Maven was able to run the tests, even if some of the test
                 // failed, record the test results and archive the jar file.               
-                success {
-                  publishHTML([
-                              allowMissing: false, 
-                              alwaysLinkToLastBuild: false, 
-                              keepAll: false, 
-                              reportDir: '/MyAutomationProject/target/surefire-reports/', 
-                              reportFiles: 'SparkReport.html', 
-                              reportName: 'ExtentReport', 
-                              reportTitles: '', 
-                              useWrapperFileDirectly: true])
-                }
+               publishHTML (target : [allowMissing: false,
+ alwaysLinkToLastBuild: true,
+ keepAll: true,
+ reportDir: 'target/surefire-reports',
+ reportFiles: 'SparkReport.html',
+ reportName: 'My Reports',
+ reportTitles: 'The Report'])
             }
         }
     }
