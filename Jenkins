@@ -20,7 +20,8 @@ maven 'M3'
                  
                 // If Maven was able to run the tests, even if some of the test
                 // failed, record the test results and archive the jar file.               
-               publishHTML (target : [allowMissing: false,
+                success {
+                publishHTML (target : [allowMissing: false,
  alwaysLinkToLastBuild: true,
  keepAll: true,
  reportDir: 'target/surefire-reports',
