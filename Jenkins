@@ -16,7 +16,7 @@ publishHTML (target : [allowMissing: false,
  alwaysLinkToLastBuild: true,
  keepAll: true,
  reportDir: 'target',
- reportFiles: 'SpartReport.html',
+ reportFiles: 'SparkReport.html',
  reportName: 'Test Automation Report',
  reportTitles: 'The Report'])
 
