@@ -1,29 +1,38 @@
+
 pipeline {
-agent any
-tools {
+    agent any
+  tools {
 maven 'M3'
 }
-stages{
-
-
-
-stage("test"){
-steps{
-sh 'mvn test'
-pwd()
-
-success {
+    stages {
+        stage('Test') {
+            steps {
+                bat "mvn -D clean test"
+            }
+  
+            post {    
+               always {
+                    allure includeProperties:
+                     false,
+                     jdk: '',
+                     results: [[path: 'allure-results']]
+                }            
+                 
+                // If Maven was able to run the tests, even if some of the test
+                // failed, record the test results and archive the jar file.               
+                success {
                   publishHTML([
                               allowMissing: false, 
                               alwaysLinkToLastBuild: false, 
                               keepAll: false, 
-                              reportDir: 'target/surefire-reports', 
+                              reportDir: '/MyAutomationProject/target/surefire-reports/', 
                               reportFiles: 'SparkReport.html', 
                               reportName: 'ExtentReport', 
                               reportTitles: '', 
                               useWrapperFileDirectly: true])
                 }
+            }
+        }
+    }
 }
-} 
-}
-}
+
