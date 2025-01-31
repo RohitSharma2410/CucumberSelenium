@@ -1,5 +1,6 @@
 package Selenium.Cucumber;
 
+import static org.testng.Assert.assertTrue;
 import static org.testng.Assert.fail;
 
 import java.io.IOException;
@@ -55,8 +56,8 @@ public void i_autheticate_user_with_credentials() {
 @Then("following {string} should be available on page")
 public void following_should_be_available_on_page(String string) {
     // Write code here that turns the phrase above into concrete actions
-	TestBase.scenarios.get().log("Assert "+string+ "is visible on page");
-	TestBase.assertions.get().assertTrue(TestBase.getElement(string).isDisplayed());
+//	TestBase.scenarios.get().log("Assert "+string+ "is visible on page");
+	Assert.assertTrue(TestBase.getElement(string).isDisplayed());
    
 }
 
@@ -77,8 +78,8 @@ public void following_should_be_available_on_page(String string) {
 
 	}
 
-@Then("Validate all of response for {string}")
-public void validate_all_of(String string) throws MalformedURLException, IOException {
+	@Then("Validate all of response for {string} should be \\{{int}}")
+public void validate_all_of(String string,Integer int1) throws MalformedURLException, IOException {
 	List<WebElement>allElements=TestBase.getElements(string);
 
     // Write code here that turns the phrase above into concrete actions
@@ -90,10 +91,7 @@ public void validate_all_of(String string) throws MalformedURLException, IOExcep
 				getProperty("appurl").toString().concat(src)).toURL().openConnection() ;
         conn.setRequestMethod("HEAD");
         conn.connect();
-        System.out.println(conn.getResponseCode());
-		TestBase.scenarios.get().log(assertionCheckValue(conn.getResponseCode(),200));
-
-        TestBase.assertions.get().assertTrue(conn.getResponseCode()==200);
+       Assert.assertTrue(conn.getResponseCode()==int1.intValue());
 }
 }
 @Then("all links should populate all of link status")
@@ -113,8 +111,8 @@ public void dragAndDrop(String string,String string2) {
 
 @Then("element {string} should be draged to target successfully")
 public void dragSuccess(String string) {
-	TestBase.scenarios.get().log("Asserting step");
-	TestBase.assertions.get().assertTrue(TestBase.getElements("DragElements").get(1).getLocation().getY()==TestBase.getElement(string).getLocation().getY());
+//	TestBase.scenarios.get().log("Asserting step");
+	Assert.assertTrue(TestBase.getElements("DragElements").get(1).getLocation().getY()==TestBase.getElement(string).getLocation().getY());
 	
 }
 @When("I right click on {string}")
@@ -131,7 +129,7 @@ public void alert_should_be_available_on_the_page() {
     try{TestBase.drivers.get().switchTo().alert().dismiss();
     }
     catch(NoAlertPresentException e) {
-		TestBase.scenarios.get().log("Assertion failed");
+//		TestBase.scenarios.get().log("Assertion failed");
 
     	new SoftAssert().fail("Alert is not pop up");
     }
@@ -153,7 +151,7 @@ public void alert_should_be_available_on_the_page() {
 
 	@Then("User login should see {string}")
 	public void user_login_should(String string) {
-		TestBase.assertions.get().assertTrue(TestBase.getElement("dashboardsearchfield").isDisplayed());
+		Assert.assertTrue(TestBase.getElement("dashboardsearchfield").isDisplayed());
 		System.out.println("Checking initial pool");
 	}
 
@@ -178,14 +176,14 @@ public void alert_should_be_available_on_the_page() {
 			String valueOfStatus = TestBase.getElementOnElement("allTransactionsStatus",
 					TestBase.getElementWithUpdatedValue(string2, "transaction", string)).getText();
 			System.out.println(valueOfStatus);
-			TestBase.scenarios.get().log(assertionCheckValue(valueOfStatus,string3));
+//			TestBase.scenarios.get().log(assertionCheckValue(valueOfStatus,string3));
 
-			TestBase.assertions.get().assertTrue (valueOfStatus.equalsIgnoreCase(string3));
+			Assert.assertTrue (valueOfStatus.equalsIgnoreCase(string3));
 			int amountvalue = StringUtilsFunctions
 					.returnOnlyNumeric(TestBase.getElementOnElement("alltransactionsamount",
 							TestBase.getElementWithUpdatedValue(string2, "transaction", string)).getText());
-			TestBase.scenarios.get().log(assertionCheckValue(amountvalue,int1));
-			TestBase.assertions.get().assertTrue (amountvalue == int1);
+//			TestBase.scenarios.get().log(assertionCheckValue(amountvalue,int1));
+			Assert.assertTrue (amountvalue == int1);
 		}
 
 	}

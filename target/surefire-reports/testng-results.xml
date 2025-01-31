@@ -2,15 +2,15 @@
 <testng-results ignored="0" total="7" passed="6" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-01-30T12:59:09 IST" name="Surefire suite" finished-at="2025-01-30T12:59:26 IST" duration-ms="17716">
+  <suite started-at="2025-01-31T12:09:33 IST" name="Surefire suite" finished-at="2025-01-31T12:09:52 IST" duration-ms="19560">
     <groups>
       <group name="cucumber">
         <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Selenium.Cucumber.RunCucumberTest@5f049ea1]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
-    <test started-at="2025-01-30T12:59:09 IST" name="Surefire test" finished-at="2025-01-30T12:59:26 IST" duration-ms="17716">
+    <test started-at="2025-01-31T12:09:33 IST" name="Surefire test" finished-at="2025-01-31T12:09:52 IST" duration-ms="19560">
       <class name="Selenium.Cucumber.RunCucumberTest">
-        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:Selenium.Cucumber.RunCucumberTest@5f049ea1]" started-at="2025-01-30T12:59:09 IST" name="setUpClass" finished-at="2025-01-30T12:59:09 IST" duration-ms="228" status="PASS">
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:Selenium.Cucumber.RunCucumberTest@5f049ea1]" started-at="2025-01-31T12:09:33 IST" name="setUpClass" finished-at="2025-01-31T12:09:33 IST" duration-ms="218" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -21,71 +21,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Selenium.Cucumber.RunCucumberTest@5f049ea1]" started-at="2025-01-30T12:59:09 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-01-30T12:59:23 IST" duration-ms="13593" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA["Validate ContextMenu elements page"]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA["All Possible Situations"]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Selenium.Cucumber.RunCucumberTest@5f049ea1]" started-at="2025-01-30T12:59:09 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-01-30T12:59:22 IST" duration-ms="13402" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA["Validate AddRemove elements page"]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA["All Possible Situations"]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Selenium.Cucumber.RunCucumberTest@5f049ea1]" started-at="2025-01-30T12:59:09 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-01-30T12:59:22 IST" duration-ms="13448" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA["Validate DragDrop page"]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA["All Possible Situations"]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Selenium.Cucumber.RunCucumberTest@5f049ea1]" started-at="2025-01-30T12:59:09 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-01-30T12:59:26 IST" duration-ms="17178" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA["Validate ChallengingDOM elements page"]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA["All Possible Situations"]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Selenium.Cucumber.RunCucumberTest@5f049ea1]" started-at="2025-01-30T12:59:09 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-01-30T12:59:26 IST" duration-ms="17206" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Selenium.Cucumber.RunCucumberTest@5f049ea1]" started-at="2025-01-31T12:09:33 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-01-31T12:09:47 IST" duration-ms="13878" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -101,7 +37,86 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Selenium.Cucumber.RunCucumberTest@5f049ea1]" started-at="2025-01-30T12:59:09 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-01-30T12:59:23 IST" duration-ms="13590" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Selenium.Cucumber.RunCucumberTest@5f049ea1]" started-at="2025-01-31T12:09:33 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-01-31T12:09:52 IST" duration-ms="19060" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Validate AddRemove elements page"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["All Possible Situations"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Selenium.Cucumber.RunCucumberTest@5f049ea1]" started-at="2025-01-31T12:09:33 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-01-31T12:09:49 IST" duration-ms="15986" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Validate BrokenImages page"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["All Possible Situations"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[expected [true] but found [false]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: expected [true] but found [false]
+at org.testng.Assert.fail(Assert.java:111)
+at org.testng.Assert.failNotEquals(Assert.java:1578)
+at org.testng.Assert.assertTrue(Assert.java:57)
+at org.testng.Assert.assertTrue(Assert.java:67)
+at Selenium.Cucumber.StepDefinitions.validate_all_of(StepDefinitions.java:94)
+at ✽.Validate all of response for "AllImageesLink" should be {200}(file:///Users/rohitsharma/eclipse-workspace/MyAutomationProject/src/test/resources/Selenium/Cucumber/HandleDifferentCases.feature:26)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Selenium.Cucumber.RunCucumberTest@5f049ea1]" started-at="2025-01-31T12:09:33 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-01-31T12:09:52 IST" duration-ms="18667" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Validate ChallengingDOM elements page"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["All Possible Situations"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Selenium.Cucumber.RunCucumberTest@5f049ea1]" started-at="2025-01-31T12:09:33 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-01-31T12:09:47 IST" duration-ms="14155" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Validate ContextMenu elements page"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["All Possible Situations"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Selenium.Cucumber.RunCucumberTest@5f049ea1]" started-at="2025-01-31T12:09:33 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-01-31T12:09:47 IST" duration-ms="14281" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -117,11 +132,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Selenium.Cucumber.RunCucumberTest@5f049ea1]" started-at="2025-01-30T12:59:09 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-01-30T12:59:25 IST" duration-ms="15629" status="FAIL">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Selenium.Cucumber.RunCucumberTest@5f049ea1]" started-at="2025-01-31T12:09:33 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-01-31T12:09:47 IST" duration-ms="14380" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA["Validate BrokenImages page"]]>
+                <![CDATA["Validate DragDrop page"]]>
               </value>
             </param>
             <param index="1">
@@ -130,20 +145,10 @@
               </value>
             </param>
           </params>
-          <exception class="java.lang.Exception">
-            <message>
-              <![CDATA[Assertion error for test Validate BrokenImages page]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.Exception: Assertion error for test Validate BrokenImages page
-at Selenium.Cucumber.TestBase.after(TestBase.java:123)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.Exception -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:Selenium.Cucumber.RunCucumberTest@5f049ea1]" started-at="2025-01-30T12:59:26 IST" name="tearDownClass" finished-at="2025-01-30T12:59:26 IST" duration-ms="260" status="PASS">
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:Selenium.Cucumber.RunCucumberTest@5f049ea1]" started-at="2025-01-31T12:09:52 IST" name="tearDownClass" finished-at="2025-01-31T12:09:52 IST" duration-ms="263" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->

@@ -249,7 +249,7 @@
 					
 					<property>
 					<name>dataproviderthreadcount</name>
-					<value>10</value>
+					<value>20</value>
 					</property>
 				
 					</properties>

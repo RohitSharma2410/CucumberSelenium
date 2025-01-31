@@ -7,7 +7,9 @@ import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(features = { "src/test/resources/Selenium/Cucumber" }, glue = { "Selenium.Cucumber",
 		"Selenium.Cucumber.TestBase" },tags= "@Hookup",plugin = {  "json:target/cucumber-reports/Cucumber.json",
-				"io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"})
+				"io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
+				"Listeners.CucumberEventListener","Listeners.TestStepFinishedListener",
+				"Listeners.TestCaseFinishedListener"})
 public class RunCucumberTest extends AbstractTestNGCucumberTests {
 
 	@Override

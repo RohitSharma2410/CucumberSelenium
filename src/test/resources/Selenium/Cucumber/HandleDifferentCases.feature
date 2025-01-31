@@ -23,7 +23,7 @@ Feature: All Possible Situations
      Scenario: Validate BrokenImages page
     Given I am on Dashboard page
     When I click on "BrokenImages"
-    Then Validate all of response for "AllImageesLink"
+    Then Validate all of response for "AllImageesLink" should be {200}
    
     
      Scenario: Validate ChallengingDOM elements page

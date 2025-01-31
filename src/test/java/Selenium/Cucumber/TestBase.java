@@ -29,12 +29,12 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
+import Listeners.EventFiringClass;
 import io.cucumber.java.After;
 import io.cucumber.java.AfterAll;
 import io.cucumber.java.Before;
 import io.cucumber.java.BeforeAll;
 import io.cucumber.java.Scenario;
-import utilsClasses.EventFiringClass;
 import utilsClasses.PropertiesFIlesHelper;
 
 public class TestBase {
@@ -47,7 +47,6 @@ public static ThreadLocal<Scenario>scenarios=null;
 	public static ThreadLocal<JavascriptExecutor> js = null;
 	public static ThreadLocal<ExtentTest> extentTest = null;
 	public static ExtentReports report = null;
-	public static ThreadLocal<SoftAssert> assertions=null;
 	
 
 	@BeforeAll
@@ -66,7 +65,7 @@ public static ThreadLocal<Scenario>scenarios=null;
 		extentTest = new ThreadLocal<>();
 		report = new ExtentReports();
 		scenarios=new ThreadLocal<>();
-assertions=new ThreadLocal<>();
+
 		ExtentSparkReporter rs = new ExtentSparkReporter(
 				System.getProperty("user.dir").concat("/target/SparkReport.html"));
 
@@ -75,17 +74,18 @@ assertions=new ThreadLocal<>();
 		report.attachReporter(rs);
 	}
 
-	@Before()
+	@Before
 	public void before_or_after(Scenario test) {
+		
 		scenarios.set(test);
 		extentTest.set(report.createTest(test.getName()));
 		extentTest.get().assignAuthor("Rohit Sharma");
-		assertions.set(new SoftAssert());
+		
 		switch (config.getProperty("browser").toString().toLowerCase()) {
 		case "chrome":
 			ChromeOptions options = new ChromeOptions();
 			options.setAcceptInsecureCerts(true);
-			//options.addArguments("--headless=new");
+//			options.addArguments("--headless=new");
 			options.setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.IGNORE);
 			drivers.set(new ChromeDriver(options));
 			break;
@@ -103,12 +103,10 @@ assertions=new ThreadLocal<>();
 		wait.set((new WebDriverWait(drivers.get(), Duration.ofSeconds(30))));
 	}
 
-	@After(order=1)
+//	@After()
 	public void after(Scenario test) throws Exception {
-try{TestBase.assertions.get().assertAll();
-}
-catch(AssertionError e) {
-		if (test.isFailed()) {
+
+		if(test.isFailed()) {
 			byte[] js = ((TakesScreenshot) drivers.get()).
 					getScreenshotAs(OutputType.BYTES);
 			test.attach(js, "image/png", test.getName());
@@ -117,17 +115,14 @@ catch(AssertionError e) {
 					concat("/screenshots/"+test.getName()+".png"));
 			FileUtils.copyFile(ts.getScreenshotAs(OutputType.FILE), file);
 			extentTest.get().addScreenCaptureFromPath(file.getAbsolutePath());
-		extentTest.get().fail(test.getName());
-		test.log(e.getMessage());
-		}
+		extentTest.get().fail(test.getName()+" from test base");
+		
+		
+		
 		throw new Exception("Assertion error for test "+test.getName());
 		
 }
-	finally {	
-if(TestBase.drivers.get().getWindowHandles().size()!=0) {
-	TestBase.drivers.get().quit();
-}
-	}
+	
 	}
 
 	@AfterAll

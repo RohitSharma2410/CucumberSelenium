@@ -1,8 +1,13 @@
 -------------------------------------------------------------------------------
 Test set: Selenium.Cucumber.RunCucumberTest
 -------------------------------------------------------------------------------
-Tests run: 7, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 23.06 s <<< FAILURE! -- in Selenium.Cucumber.RunCucumberTest
-Selenium.Cucumber.RunCucumberTest.runScenario["Validate BrokenImages page", "All Possible Situations"](5) -- Time elapsed: 15.63 s <<< FAILURE!
-java.lang.Exception: Assertion error for test Validate BrokenImages page
-	at Selenium.Cucumber.TestBase.after(TestBase.java:123)
+Tests run: 7, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 24.90 s <<< FAILURE! -- in Selenium.Cucumber.RunCucumberTest
+Selenium.Cucumber.RunCucumberTest.runScenario["Validate BrokenImages page", "All Possible Situations"](5) -- Time elapsed: 15.99 s <<< FAILURE!
+java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:111)
+	at org.testng.Assert.failNotEquals(Assert.java:1578)
+	at org.testng.Assert.assertTrue(Assert.java:57)
+	at org.testng.Assert.assertTrue(Assert.java:67)
+	at Selenium.Cucumber.StepDefinitions.validate_all_of(StepDefinitions.java:94)
+	at ✽.Validate all of response for "AllImageesLink" should be {200}(file:///Users/rohitsharma/eclipse-workspace/MyAutomationProject/src/test/resources/Selenium/Cucumber/HandleDifferentCases.feature:26)
 
