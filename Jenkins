@@ -15,10 +15,10 @@ pwd()
 publishHTML (target : [allowMissing: false,
  alwaysLinkToLastBuild: true,
  keepAll: true,
- reportDir: '/MyAutomationProject/target',
+ reportDir: '/MyAutomationProject/target/extent',
  reportFiles: 'SparkReport.html',
  reportName: 'Test Automation Report',
- reportTitles: 'The Report'])
+ reportTitles: 'SparkReport.html'])
 
 cucumber buildStatus: 'UNCHANGED', customCssFiles: '', customJsFiles: '', failedFeaturesNumber: -1, failedScenariosNumber: -1, failedStepsNumber: -1, fileIncludePattern: '**/*.json', jsonReportDirectory: 'target/cucumber-reports', pendingStepsNumber: -1, reportTitle: 'TestReport', skippedStepsNumber: -1, sortingMethod: 'ALPHABETICAL', undefinedStepsNumber: -1
 }

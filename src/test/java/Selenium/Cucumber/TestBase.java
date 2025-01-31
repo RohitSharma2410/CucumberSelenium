@@ -68,7 +68,7 @@ public static ThreadLocal<Scenario>scenarios=null;
 		System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", 
 				"sandbox allow-scripts; default-src 'self'; script-src * 'unsafe-eval'; img-src *; style-src * 'unsafe-inline'; font-src *");
 		ExtentSparkReporter rs = new ExtentSparkReporter(
-				System.getProperty("user.dir").concat("/target/SparkReport.html"));
+				System.getProperty("user.dir").concat("/target/extent/SparkReport.html"));
 
 		rs.loadXMLConfig(
 				new File(System.getProperty("user.dir").concat("/src/test/resources/extent.xml")));

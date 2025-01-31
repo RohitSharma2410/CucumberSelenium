@@ -45,7 +45,7 @@ public class TestStepFinishedListener implements ConcurrentEventListener{
         				
         				
         					File file = new File(System.getProperty("user.dir").
-            						concat("/screenshots/"+step.getStep().getText()+".png"));
+            						concat("/target/extent/"+step.getStep().getText()+".png"));
             				FileUtils.copyFile(ts.getScreenshotAs(OutputType.FILE), file);
             				TestBase.extentTest.get().addScreenCaptureFromPath(file.getAbsolutePath(),step.getStep().getText());
         					TestBase.extentTest.get().log(com.aventstack.extentreports.Status.FAIL,"\n"+ step.getStep().getText());
