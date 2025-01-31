@@ -15,7 +15,7 @@ pwd()
 publishHTML (target : [allowMissing: false,
  alwaysLinkToLastBuild: true,
  keepAll: true,
- reportDir: '/MyAutomationProject/target/extent',
+ reportDir: 'MyAutomationProject/target/extent',
  reportFiles: 'SparkReport.html',
  reportName: 'Test Automation Report',
  reportTitles: 'SparkReport.html'])
