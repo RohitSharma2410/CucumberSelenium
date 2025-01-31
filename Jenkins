@@ -17,7 +17,7 @@ publishHTML (target : [allowMissing: false,
  keepAll: true,
  reportDir: 'MyAutomationProject/target/extent',
  reportFiles: 'SparkReport.html',
- reportName: 'Test Automation Report',
+ reportName: 'SparkReport.html',
  reportTitles: 'SparkReport.html'])
 
 cucumber buildStatus: 'UNCHANGED', customCssFiles: '', customJsFiles: '', failedFeaturesNumber: -1, failedScenariosNumber: -1, failedStepsNumber: -1, fileIncludePattern: '**/*.json', jsonReportDirectory: 'target/cucumber-reports', pendingStepsNumber: -1, reportTitle: 'TestReport', skippedStepsNumber: -1, sortingMethod: 'ALPHABETICAL', undefinedStepsNumber: -1
