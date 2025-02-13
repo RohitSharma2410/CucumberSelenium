@@ -4,9 +4,7 @@ pipeline {
   tools {
 maven 'M3'
 }
-parameters {
-  choice choices: ['test', 'uat'], name: 'testunder'
-}
+
 
     stages {
         stage('Test') {
