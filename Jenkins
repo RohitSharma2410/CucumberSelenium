@@ -5,9 +5,9 @@ pipeline {
 maven 'M3'
 }
 parameters {
-  string ''
-  choice choices: ['Test', 'UAT'], name: 'Environment'
+  choice choices: ['test', 'uat'], name: 'testunder'
 }
+
     stages {
         stage('Test') {
             steps {
